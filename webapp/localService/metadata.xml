@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZABM_FIORI_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Attribute" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Idservice"/>
+                    <PropertyRef Name="Idattribute"/>
+                </Key>
+                <Property Name="Idservice" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Idattribute" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AttributeName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tipo" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Multiselect" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Boolean Variable (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AttributeLabel" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Customizable" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Boolean Variable (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RangoMin" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RangoMax" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsObligatory" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Boolean Variable (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Service" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Idservice"/>
+                </Key>
+                <Property Name="Idservice" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceBasico" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceDesc" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tipo" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ServiceNivel" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceNivelName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceExecutor" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceExecutorName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceGrupo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usuario" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="End Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Start Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="toAttributes" Relationship="ZABM_FIORI_SRV.ServiceToAttribute" FromRole="FromRole_ServiceToAttribute" ToRole="ToRole_ServiceToAttribute"/>
+            </EntityType>
+            <EntityType Name="MaestroDato" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RefValue" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maestro" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usuario" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="RequestAbmService" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Request"/>
+                    <PropertyRef Name="Posnr"/>
+                    <PropertyRef Name="UserId"/>
+                </Key>
+                <Property Name="Request" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Idservice" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IniFecha" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinFecha" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceDesc" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Action" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceState" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Aprobador" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ejecutor" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="toAttributes" Relationship="ZABM_FIORI_SRV.RequestServiceToServiceAttributes" FromRole="FromRole_RequestServiceToServiceAttributes" ToRole="ToRole_RequestServiceToServiceAttributes"/>
+                <NavigationProperty Name="ToAuthorityService" Relationship="ZABM_FIORI_SRV.ServiceToAuthority" FromRole="FromRole_ServiceToAuthority" ToRole="ToRole_ServiceToAuthority"/>
+            </EntityType>
+            <EntityType Name="RequestAbm" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Request"/>
+                    <PropertyRef Name="UserId"/>
+                </Key>
+                <Property Name="Request" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestLevel" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tipo" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExecutorHr" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Requester" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="State" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UnidadOrg" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Area" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cargo" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ci" Type="Edm.String" Nullable="false" MaxLength="11" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Approver" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Executor" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reviewer" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Progression" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TipoDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StateDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Actor" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PernrName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ApproverName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExecutorName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequesterName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Level" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToService" Relationship="ZABM_FIORI_SRV.RequestToService" FromRole="FromRole_RequestToService" ToRole="ToRole_RequestToService"/>
+                <NavigationProperty Name="ToEmployee" Relationship="ZABM_FIORI_SRV.RequestToEmployee" FromRole="FromRole_RequestToEmployee" ToRole="ToRole_RequestToEmployee"/>
+                <NavigationProperty Name="ToAuthorityRequest" Relationship="ZABM_FIORI_SRV.RequestToAuthority" FromRole="FromRole_RequestToAuthority" ToRole="ToRole_RequestToAuthority"/>
+            </EntityType>
+            <EntityType Name="Employee" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="UserId"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Request" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nombres" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Apellidos" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nombre1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nombre2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Apellido1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Apellido2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NombreCompleto" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Carnet" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FechaNacimiento" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Start Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RazaId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Raza" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SexoId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sexo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NacionalidadId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NacionalidadTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Edad" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EstadoCivil" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Peso" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Talla" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GrupoSanguineo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ColorOjosId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ColorPeloId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ColorOjosTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ColorPeloTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sennas" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Direccion" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DireccionCalle" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DireccionReparto" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DireccionResidencia" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DireccionResidenciaCalle" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DireccionResidenciaReparto" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaisId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaisResidenciaId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaisTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaisResidenciaTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProvinciaId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProvinciaResidenciaId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProvinciaTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProvinciaResidenciaTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MunicipioId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MunicipioResidenciaId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MunicipioTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MunicipioResidenciaTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Telefono" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TelefonoResidencia" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Movil" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mail" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Foto" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Titulo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DivisionId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SubDivisionId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DivisionTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SubDivisionTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AreaPersonalId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AreaPersonalTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UnidadId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UnidadTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FuncionId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FuncionTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PosicionId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PosicionTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NivelId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NivelTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EspecialidadId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EspecialidadTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContratoId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContratoTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FormacionAnno" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FormacionProvinciaId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FormacionPaisId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FormacionProvinciaTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FormacionPaisTxt" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EstadoCivilId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="RequestAttrValue" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Request"/>
+                    <PropertyRef Name="Posnr"/>
+                    <PropertyRef Name="UserId"/>
+                    <PropertyRef Name="Posattr"/>
+                </Key>
+                <Property Name="Request" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posattr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Idattribute" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AttributeName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AttrValue" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsObligatory" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ServiceDependence" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Idservice"/>
+                    <PropertyRef Name="DependIdservice"/>
+                    <PropertyRef Name="Idattribute"/>
+                </Key>
+                <Property Name="Idservice" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DependIdservice" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Idattribute" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="HrService" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Posnr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceDesc" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Idservice" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="End Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Start Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="HrServiceSet" Relationship="ZABM_FIORI_SRV.HrServiceToAttribute" FromRole="FromRole_HrServiceToAttribute" ToRole="ToRole_HrServiceToAttribute"/>
+            </EntityType>
+            <EntityType Name="HrAttribute" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Posnr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posat" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="IT record no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Idattribute" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AuthorityRequest" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Request"/>
+                    <PropertyRef Name="UserId"/>
+                    <PropertyRef Name="Accion"/>
+                </Key>
+                <Property Name="Request" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Accion" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Authorized" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AuthorityService" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Request"/>
+                    <PropertyRef Name="Posnr"/>
+                    <PropertyRef Name="UserId"/>
+                    <PropertyRef Name="Accion"/>
+                </Key>
+                <Property Name="Request" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Accion" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Authorized" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="ServiceToAttribute" sap:content-version="1">
+                <End Type="ZABM_FIORI_SRV.Service" Multiplicity="1" Role="FromRole_ServiceToAttribute"/>
+                <End Type="ZABM_FIORI_SRV.Attribute" Multiplicity="*" Role="ToRole_ServiceToAttribute"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ServiceToAttribute">
+                        <PropertyRef Name="Idservice"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ServiceToAttribute">
+                        <PropertyRef Name="Idservice"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RequestToService" sap:content-version="1">
+                <End Type="ZABM_FIORI_SRV.RequestAbm" Multiplicity="1" Role="FromRole_RequestToService"/>
+                <End Type="ZABM_FIORI_SRV.RequestAbmService" Multiplicity="*" Role="ToRole_RequestToService"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RequestToService">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Request"/>
+                    </Principal>
+                    <Dependent Role="ToRole_RequestToService">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Request"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RequestToEmployee" sap:content-version="1">
+                <End Type="ZABM_FIORI_SRV.RequestAbm" Multiplicity="1" Role="FromRole_RequestToEmployee"/>
+                <End Type="ZABM_FIORI_SRV.Employee" Multiplicity="0..1" Role="ToRole_RequestToEmployee"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RequestToEmployee">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Request"/>
+                    </Principal>
+                    <Dependent Role="ToRole_RequestToEmployee">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Request"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RequestToAuthority" sap:content-version="1">
+                <End Type="ZABM_FIORI_SRV.RequestAbm" Multiplicity="1" Role="FromRole_RequestToAuthority"/>
+                <End Type="ZABM_FIORI_SRV.AuthorityRequest" Multiplicity="*" Role="ToRole_RequestToAuthority"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RequestToAuthority">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Request"/>
+                    </Principal>
+                    <Dependent Role="ToRole_RequestToAuthority">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Request"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="HrServiceToAttribute" sap:content-version="1">
+                <End Type="ZABM_FIORI_SRV.HrService" Multiplicity="1" Role="FromRole_HrServiceToAttribute"/>
+                <End Type="ZABM_FIORI_SRV.HrAttribute" Multiplicity="*" Role="ToRole_HrServiceToAttribute"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_HrServiceToAttribute">
+                        <PropertyRef Name="Pernr"/>
+                        <PropertyRef Name="Posnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_HrServiceToAttribute">
+                        <PropertyRef Name="Pernr"/>
+                        <PropertyRef Name="Posnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ServiceToAuthority" sap:content-version="1">
+                <End Type="ZABM_FIORI_SRV.RequestAbmService" Multiplicity="1" Role="FromRole_ServiceToAuthority"/>
+                <End Type="ZABM_FIORI_SRV.AuthorityService" Multiplicity="*" Role="ToRole_ServiceToAuthority"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ServiceToAuthority">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Posnr"/>
+                        <PropertyRef Name="Request"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ServiceToAuthority">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Posnr"/>
+                        <PropertyRef Name="Request"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RequestServiceToServiceAttributes" sap:content-version="1">
+                <End Type="ZABM_FIORI_SRV.RequestAbmService" Multiplicity="1" Role="FromRole_RequestServiceToServiceAttributes"/>
+                <End Type="ZABM_FIORI_SRV.RequestAttrValue" Multiplicity="*" Role="ToRole_RequestServiceToServiceAttributes"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RequestServiceToServiceAttributes">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Posnr"/>
+                        <PropertyRef Name="Request"/>
+                    </Principal>
+                    <Dependent Role="ToRole_RequestServiceToServiceAttributes">
+                        <PropertyRef Name="UserId"/>
+                        <PropertyRef Name="Posnr"/>
+                        <PropertyRef Name="Request"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZABM_FIORI_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="AttributeSet" EntityType="ZABM_FIORI_SRV.Attribute" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ServiceSet" EntityType="ZABM_FIORI_SRV.Service" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MaestroDatoSet" EntityType="ZABM_FIORI_SRV.MaestroDato" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RequestAbmServiceSet" EntityType="ZABM_FIORI_SRV.RequestAbmService" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="RequestAbmSet" EntityType="ZABM_FIORI_SRV.RequestAbm" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="EmployeeSet" EntityType="ZABM_FIORI_SRV.Employee" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RequestAttrValueSet" EntityType="ZABM_FIORI_SRV.RequestAttrValue" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ServiceDependenceSet" EntityType="ZABM_FIORI_SRV.ServiceDependence" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="HrServiceSet" EntityType="ZABM_FIORI_SRV.HrService" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="HrAttributeSet" EntityType="ZABM_FIORI_SRV.HrAttribute" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AuthoritySet" EntityType="ZABM_FIORI_SRV.AuthorityRequest" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AuthorityServiceSet" EntityType="ZABM_FIORI_SRV.AuthorityService" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="RequestToServiceSet" Association="ZABM_FIORI_SRV.RequestToService" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RequestAbmSet" Role="FromRole_RequestToService"/>
+                    <End EntitySet="RequestAbmServiceSet" Role="ToRole_RequestToService"/>
+                </AssociationSet>
+                <AssociationSet Name="HrServiceToAttributeSet" Association="ZABM_FIORI_SRV.HrServiceToAttribute" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="HrServiceSet" Role="FromRole_HrServiceToAttribute"/>
+                    <End EntitySet="HrAttributeSet" Role="ToRole_HrServiceToAttribute"/>
+                </AssociationSet>
+                <AssociationSet Name="RequestServiceToServiceAttributesSet" Association="ZABM_FIORI_SRV.RequestServiceToServiceAttributes" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RequestAbmServiceSet" Role="FromRole_RequestServiceToServiceAttributes"/>
+                    <End EntitySet="RequestAttrValueSet" Role="ToRole_RequestServiceToServiceAttributes"/>
+                </AssociationSet>
+                <AssociationSet Name="RequestToAuthoritySet" Association="ZABM_FIORI_SRV.RequestToAuthority" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RequestAbmSet" Role="FromRole_RequestToAuthority"/>
+                    <End EntitySet="AuthoritySet" Role="ToRole_RequestToAuthority"/>
+                </AssociationSet>
+                <AssociationSet Name="RequestToEmployeeSet" Association="ZABM_FIORI_SRV.RequestToEmployee" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RequestAbmSet" Role="FromRole_RequestToEmployee"/>
+                    <End EntitySet="EmployeeSet" Role="ToRole_RequestToEmployee"/>
+                </AssociationSet>
+                <AssociationSet Name="ServiceToAuthoritySet" Association="ZABM_FIORI_SRV.ServiceToAuthority" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RequestAbmServiceSet" Role="FromRole_ServiceToAuthority"/>
+                    <End EntitySet="AuthorityServiceSet" Role="ToRole_ServiceToAuthority"/>
+                </AssociationSet>
+                <AssociationSet Name="ServiceToAttributeSet" Association="ZABM_FIORI_SRV.ServiceToAttribute" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ServiceSet" Role="FromRole_ServiceToAttribute"/>
+                    <End EntitySet="AttributeSet" Role="ToRole_ServiceToAttribute"/>
+                </AssociationSet>
+                <FunctionImport Name="RequestAction" ReturnType="Collection(ZABM_FIORI_SRV.RequestAbm)" EntitySet="RequestAbmSet" m:HttpMethod="GET" sap:action-for="ZABM_FIORI_SRV.RequestAbm">
+                    <Parameter Name="State" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="Request" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="Action" Type="Edm.String" Mode="In" MaxLength="20"/>
+                </FunctionImport>
+                <FunctionImport Name="RequestServiceAction" ReturnType="Collection(ZABM_FIORI_SRV.RequestAbmService)" EntitySet="RequestAbmServiceSet" m:HttpMethod="GET" sap:action-for="ZABM_FIORI_SRV.RequestAbmService">
+                    <Parameter Name="Action" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="Request" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="State" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="Service" Type="Edm.String" Mode="In" MaxLength="2"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link rel="self" href="http://sapfioriprod.etecsa.cu:8000/sap/opu/odata/sap/ZABM_FIORI_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sapfioriprod.etecsa.cu:8000/sap/opu/odata/sap/ZABM_FIORI_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
